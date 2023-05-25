@@ -6,7 +6,7 @@
 /*   By: amaligno <amaligno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 16:39:35 by amaligno          #+#    #+#             */
-/*   Updated: 2023/05/18 19:16:57 by amaligno         ###   ########.fr       */
+/*   Updated: 2023/05/25 12:43:14 by amaligno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ static int	is_digit(char c)
 	return (c >= '0' && c <= '9');
 }
 
-int	ft_atoi(const char *str)
+int	ft_atoi(char *str)
 {
-	int	result;
-	int	sign;
+	long int		result;
+	long int		sign;
 
 	result = 0;
 	sign = 1;

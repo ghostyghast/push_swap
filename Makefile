@@ -1,8 +1,10 @@
 SRCS = $(wildcard *.c)
 
-OBJ_PREFIXED = $(addprefix objs/, $(OBJ))
+OBJ_DIR = objs/
 
-OBJ = $(SRCS:.o=.c)
+OBJ_PREFIXED = $(addprefix $(OBJ_DIR), $(OBJ))
+
+OBJ = $(SRCS:.c=.o)
 
 INCLUDES =  -Ilibft -lft -L./libft
 
@@ -12,9 +14,9 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra #-fsanitize=address
 
-obj/%.o: %.c push_swap.h
-	@mkdir -p obj
-	@$(CC) $(CFLAGS) -c $@ -o $<
+$(OBJ_DIR)%.o: %.c push_swap.h
+	@mkdir -p $(OBJ_DIR)
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME) : $(OBJ_PREFIXED)
 	@make -C ./libft
@@ -23,9 +25,12 @@ $(NAME) : $(OBJ_PREFIXED)
 all : $(NAME)
 
 clean :
-	@rm *.o
+	@make clean -C ./libft
+	@rm -rf $(OBJ_DIR)
 
 fclean : clean
+	@make fclean -C ./libft
 	@rm $(NAME)
 
-re : fclean
+re : fclean all
+	@make re -C ./libft

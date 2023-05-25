@@ -6,7 +6,7 @@
 /*   By: amaligno <amaligno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:15:32 by amaligno          #+#    #+#             */
-/*   Updated: 2023/05/22 16:39:00 by amaligno         ###   ########.fr       */
+/*   Updated: 2023/05/25 12:24:27 by amaligno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 # define LIBFT_H
 # include <stdarg.h>
 # include <stdio.h>
+# include <stdlib.h>
 # include <unistd.h>
 
 typedef struct s_int
 {
-	int		num;
-	t_int	*next;
+	int				num;
+	struct s_int	*next;
 }			t_int;
 
 //libft
-int		ft_atoi(const char *str);
+int		ft_atoi(char *str);
+void	ft_putendl_fd(char *s, int fd);
 
 int		ft_lstsize(t_int *lst);
 t_int	*ft_lstnew(int num);
