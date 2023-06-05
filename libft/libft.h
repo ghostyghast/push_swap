@@ -6,7 +6,7 @@
 /*   By: amaligno <amaligno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:15:32 by amaligno          #+#    #+#             */
-/*   Updated: 2023/05/25 12:24:27 by amaligno         ###   ########.fr       */
+/*   Updated: 2023/06/05 20:18:45 by amaligno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_int
 {
 	int				num;
 	struct s_int	*next;
+	struct s_int	*prev;
 }			t_int;
 
 //libft

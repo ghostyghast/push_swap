@@ -6,7 +6,7 @@
 /*   By: amaligno <amaligno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 21:53:28 by amaligno          #+#    #+#             */
-/*   Updated: 2023/05/22 16:38:44 by amaligno         ###   ########.fr       */
+/*   Updated: 2023/06/05 20:19:21 by amaligno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ void	ft_lstadd_back(t_int **lst, t_int *new)
 		return ;
 	}
 	temp = ft_lstlast(*lst);
+	new->prev = temp;
 	temp->next = new;
 }

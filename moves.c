@@ -6,64 +6,85 @@
 /*   By: amaligno <amaligno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 09:32:36 by amaligno          #+#    #+#             */
-/*   Updated: 2023/05/25 11:45:49 by amaligno         ###   ########.fr       */
+/*   Updated: 2023/06/05 21:32:26 by amaligno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push(t_int *src_stack, t_int *dst_stack)
+//	push function: it takes the adress of last node of src stack, 
+//	and adds it to last node of dst stack
+void	push(t_int *src_stack, t_int *dst_stack, char c)
 {
-	t_int	*src_last;
-	t_int	*dst_last;
-	int		lst_size;
+	t_int	*src_head;
 
-	if (!src_stack->num)
+	if (!src_stack)
 		return ;
-	src_last = ft_lstlast(src_stack);
-	lst_size = ft_lstsize(dst_stack);
-	while (--lst_size != 2)
-		dst_last = dst_stack->next;
-	dst_last->next = NULL;
+	src_head = src_stack;
+	src_head->next->prev = NULL;
+	src_stack = src_head->next;
+	ft_lstadd_front(&dst_stack, src_head);
+	ft_printf("p%c\n", c);
 }
 
-void	swap(t_int *stack)
+//swap function, it switches first two values of first two nodes of stack
+void	swap(t_int *stack, char c)
 {
-	t_int	*b4_last;
 	int		num;
-	int		size;
 
-	b4_last = stack;
-	size = ft_lstsize(stack);
-	if (!stack->num || size <= 1)
+	if (!stack || ft_lstsize(stack) <= 1)
 		return ;
-	while (size-- != 2)
-		b4_last = b4_last->next;
-	num = ft_lstlast(stack)->num;
-	ft_lstlast(stack)->num = b4_last->num;
-	b4_last->num = num;
-}
-
-void	rotate(t_int *stack)
-{
-	int	num;
-
 	num = stack->num;
-	stack->num = ft_lstlast(stack)->num;
-	ft_lstlast(stack)->num = num;
+	stack->next = stack->next->num;
+	stack->next->num = num;
+	if (c == 'a' || c == 'b')
+		ft_printf("s%c\n", stack);
+	else if (c == 's')
+		ft_printf("ss\n", stack);
 }
 
-void	rev_rotate(t_int *stack)
+void	rotate(t_int *stack, char c)
 {
-	int	num;
+	t_int	*temp;
+	int		num;
 
-	num = ft_lstlast(stack)->num;
-	ft_lstlast(stack)->num = stack->num;
-	stack->num = num;
+	if (!stack || ft_lstsize(stack) <= 1)
+		return ;
+	temp = stack;
+	temp->next->prev = NULL;
+	ft_lstadd_back(&stack, temp);
+	if (c == 'a' || c == 'b')
+		ft_printf("r%c\n", stack);
+	else if (c == 'r')
+		ft_printf("rr\n", stack);
 }
 
-void	dual_rotate(t_int *stack_a, t_int *stack_b, void (*f)(t_int *))
+void	rev_rotate(t_int *stack, char c)
 {
-	f(stack_a);
-	f(stack_b);
+	t_int	*temp;
+	int		num;
+
+	if (!stack || ft_lstsize(stack) <= 1)
+		return ;
+	temp = ft_lstlast(stack);
+	temp->prev->next = NULL;
+	ft_lstadd_front(&stack, temp);
+	if (c == 'a' || c == 'b')
+		ft_printf("rr%c\n", stack);
+	else if (c == 'r')
+		ft_printf("rrr\n", stack);
+}
+
+void	dual_action(t_int *a, t_int *b, void (*f)(t_int *, char), char c)
+{
+	if (c == 's')
+	{
+		f(a, 's');
+		f(b, 0);
+	}
+	else if (c == 'r')
+	{
+		f(a, 'r');
+		f(b, 0);
+	}
 }
