@@ -6,7 +6,7 @@
 /*   By: amaligno <amaligno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 21:13:56 by amaligno          #+#    #+#             */
-/*   Updated: 2023/06/05 20:18:52 by amaligno         ###   ########.fr       */
+/*   Updated: 2023/06/06 21:30:10 by amaligno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	ft_lstadd_front(t_int **lst, t_int *new)
 
 	if (!new)
 		return ;
-	if (!lst)
+	new->prev = NULL;
+	if (!lst || !*lst)
 	{
 		*lst = new;
 		return ;

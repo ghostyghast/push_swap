@@ -6,7 +6,7 @@
 /*   By: amaligno <amaligno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 16:39:35 by amaligno          #+#    #+#             */
-/*   Updated: 2023/05/25 12:43:14 by amaligno         ###   ########.fr       */
+/*   Updated: 2023/06/06 16:47:53 by amaligno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ static int	is_char(char c, char *s)
 	while (*s)
 	{
 		if (*s == c)
-		{
 			return (1);
-		}
 		s++;
 	}
 	return (0);
@@ -40,7 +38,7 @@ static int	is_digit(char c)
 	return (c >= '0' && c <= '9');
 }
 
-int	ft_atoi(char *str)
+long	ft_atoi(char *str)
 {
 	long int		result;
 	long int		sign;

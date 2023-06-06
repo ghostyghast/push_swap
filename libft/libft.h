@@ -6,7 +6,7 @@
 /*   By: amaligno <amaligno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:15:32 by amaligno          #+#    #+#             */
-/*   Updated: 2023/06/05 20:18:45 by amaligno         ###   ########.fr       */
+/*   Updated: 2023/06/06 16:27:01 by amaligno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_int
 }			t_int;
 
 //libft
-int		ft_atoi(char *str);
+long	ft_atoi(char *str);
 void	ft_putendl_fd(char *s, int fd);
 
 int		ft_lstsize(t_int *lst);
