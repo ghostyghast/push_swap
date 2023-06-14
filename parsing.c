@@ -6,7 +6,7 @@
 /*   By: amaligno <amaligno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 16:24:27 by amaligno          #+#    #+#             */
-/*   Updated: 2023/06/06 18:48:16 by amaligno         ###   ########.fr       */
+/*   Updated: 2023/06/14 15:16:15 by amaligno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	parse_check(char **str)
 		}
 		if (num < INT_MIN || num > INT_MAX)
 		{
-			ft_putendl_fd("Int exceeds max/min int", 2);
+			ft_putendl_fd("Int exceeds max/max int", 2);
 			return (0);
 		}
 		if (!check_dup(str, i, num))
@@ -63,4 +63,30 @@ int	parse_check(char **str)
 		}
 	}
 	return (1);
+}
+
+void	index_values(t_int *head, int val)
+{
+	int		max;
+	int		index;
+	t_int	*stack;
+
+	index = ft_lstsize(head);
+	while (index)
+	{
+		stack = head;
+		max = get_val(head, 0);
+		while (stack)
+		{
+			if ((stack->num > max) && (stack->num < val))
+				max = stack->num;
+			stack = stack->next;
+		}
+		val = max;
+		stack = head;
+		while ((stack) && (stack->num != val))
+			stack = stack->next;
+		stack->index = index;
+		index--;
+	}
 }

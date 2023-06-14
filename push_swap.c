@@ -6,29 +6,11 @@
 /*   By: amaligno <amaligno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:09:30 by amaligno          #+#    #+#             */
-/*   Updated: 2023/06/06 21:55:14 by amaligno         ###   ########.fr       */
+/*   Updated: 2023/06/14 19:04:27 by amaligno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	print_stack(t_int *stack)
-{
-	t_int	*a;
-
-	if (!stack)
-	{
-		ft_printf("(null)\n");
-		return ;
-	}
-	a = stack;
-	while (a->next)
-	{
-		ft_printf("%i ", a->num);
-		a = a->next;
-	}
-	ft_printf("%i\n", a->num);
-}
 
 int	main(int c, char **str)
 {
@@ -43,5 +25,16 @@ int	main(int c, char **str)
 	b = NULL;
 	while (++i < c)
 		ft_lstadd_back(&a, ft_lstnew(ft_atoi(str[i])));
-	return (0);
+	index_values(a, INT_MAX);
+	print_stack(a);
+	if (simple_sorting(&a, &b, c))
+		return (0);
+	if (is_sorted(a))
+		ft_printf("list is sorted :D\n");
+	else
+		ft_printf("not sorted :(\n");
+	print_stack(a);
+	ft_lstclear(&a);
+	ft_lstclear(&b);
+	// system("leaks push_swap");
 }

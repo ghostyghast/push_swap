@@ -6,7 +6,7 @@
 /*   By: amaligno <amaligno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:51:14 by amaligno          #+#    #+#             */
-/*   Updated: 2023/06/05 20:19:05 by amaligno         ###   ########.fr       */
+/*   Updated: 2023/06/13 18:16:14 by amaligno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_int	*ft_lstnew(int num)
 	if (!new)
 		return (NULL);
 	new->num = num;
+	new->index = -1;
 	new->prev = NULL;
 	new->next = NULL;
 	return (new);
