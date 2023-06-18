@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amaligno <amaligno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:09:30 by amaligno          #+#    #+#             */
-/*   Updated: 2023/06/14 19:04:27 by amaligno         ###   ########.fr       */
+/*   Updated: 2023/06/18 19:48:53 by amaligno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,7 @@ int	main(int c, char **str)
 	while (++i < c)
 		ft_lstadd_back(&a, ft_lstnew(ft_atoi(str[i])));
 	index_values(a, INT_MAX);
-	print_stack(a);
-	if (simple_sorting(&a, &b, c))
-		return (0);
-	if (is_sorted(a))
-		ft_printf("list is sorted :D\n");
-	else
-		ft_printf("not sorted :(\n");
-	print_stack(a);
+	do_instructions(&a, &b);
 	ft_lstclear(&a);
 	ft_lstclear(&b);
 	// system("leaks push_swap");

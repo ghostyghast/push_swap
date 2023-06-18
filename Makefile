@@ -1,36 +1,50 @@
-SRCS = $(wildcard *.c)
+SRCS = moves.c parsing.c push_swap.c radix_sort.c simple_sorts.c utils.c
 
-OBJ_DIR = objs/
+SRCS_B = push_swap_bonus.c do_instructions.c moves.c parsing.c utils.c
 
-OBJ_PREFIXED = $(addprefix $(OBJ_DIR), $(OBJ))
+DIR = src/
 
-OBJ = $(SRCS:.c=.o)
+BONUS = checker
 
-INCLUDES =  -Ilibft -lft -L./libft
+SRC_PREF = $(addprefix $(DIR), $(SRCS))
+
+SRCS_B_PREF = $(addprefix $(DIR), $(SRCS_B))
+
+OBJ = $(SRC_PREF:.c=.o)
+
+OBJ_B = $(SRCS_B_PREF:.c=.o)
 
 NAME = push_swap
+
+INCLUDES = -Iincludes -Ilibft -L./libft -lft
 
 CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra #-fsanitize=address
 
-$(OBJ_DIR)%.o: %.c push_swap.h
-	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -c $< -o $@
+%.o: %.c 
+	@$(CC) $(CFLAGS) -Iincludes -Ilibft -c $< -o $@
 
-$(NAME) : $(OBJ_PREFIXED)
-	@make -C ./libft
-	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJ_PREFIXED) -o $@
+$(NAME) : $(OBJ)
+	make -C ./libft
+	@$(CC) $(CFLAGS) $(INCLUDES) -o $@ $(OBJ)
+
+$(BONUS) : $(OBJ_B)
+	@$(CC) $(CFLAGS) $(INCLUDES) -o $@ $(OBJ_B)
 
 all : $(NAME)
 
+bonus : $(BONUS)
+
 clean :
 	@make clean -C ./libft
-	@rm -rf $(OBJ_DIR)
+	@rm -rf src/*.o
 
 fclean : clean
 	@make fclean -C ./libft
-	@rm $(NAME)
+	@rm $(NAME) $(BONUS)
 
 re : fclean all
 	@make re -C ./libft
+
+.PHONY: all bonus clean fclean re

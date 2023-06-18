@@ -6,7 +6,7 @@
 /*   By: amaligno <amaligno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:15:32 by amaligno          #+#    #+#             */
-/*   Updated: 2023/06/13 18:16:04 by amaligno         ###   ########.fr       */
+/*   Updated: 2023/06/18 20:13:48 by amaligno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,16 @@
 # define LIBFT_H
 # include <stdarg.h>
 # include <stdio.h>
+# include <string.h>
+# include <stdbool.h>
+# include <stdlib.h>
+# include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 
 typedef struct s_int
 {
@@ -29,6 +37,7 @@ typedef struct s_int
 long	ft_atoi(char *str);
 void	ft_putendl_fd(char *s, int fd);
 
+int		ft_strcmp(char *s1, char *s2);
 int		ft_lstsize(t_int *lst);
 t_int	*ft_lstnew(int num);
 t_int	*ft_lstlast(t_int *lst);
@@ -44,5 +53,15 @@ void	ft_putchar(int c, int *i);
 void	ft_putnbr(int nb, int *len);
 void	ft_putunsigned(unsigned int nb, int *len);
 void	ft_puthexa(unsigned int n, int *len);
+
+//get_next_line
+char	*get_next_line(int fd);
+char	*ft_strjoin(char *s1, char *s2);
+char	*to_send(char *str);
+
+void	*ft_memcpy(void *dst, void *src, size_t n);
+
+size_t	length(char *str);
+int		strcheck(char *s);
 
 #endif
