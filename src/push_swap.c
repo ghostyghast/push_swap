@@ -6,7 +6,7 @@
 /*   By: amaligno <amaligno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:09:30 by amaligno          #+#    #+#             */
-/*   Updated: 2023/06/18 19:46:38 by amaligno         ###   ########.fr       */
+/*   Updated: 2023/06/19 18:26:47 by amaligno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,10 @@ int	main(int c, char **str)
 	while (++i < c)
 		ft_lstadd_back(&a, ft_lstnew(ft_atoi(str[i])));
 	index_values(a, INT_MAX);
-	// if (is_sorted(a))
-	// 	return (ft_printf("list is sorted :D\n"), 0);
 	if (simple_sorting(&a, &b, c))
 		return (0);
-	radix_sort(&a, &b);
-	// if (!is_sorted(a))
-	// 	ft_printf("not sorted :(\n");
+	if (!is_sorted(a))
+		radix_sort(&a, &b);
 	ft_lstclear(&a);
 	ft_lstclear(&b);
 }

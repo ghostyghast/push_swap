@@ -20,7 +20,7 @@ INCLUDES = -Iincludes -Ilibft -L./libft -lft
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra #-fsanitize=address
+CFLAGS = -Wall -Werror -Wextra
 
 %.o: %.c 
 	@$(CC) $(CFLAGS) -Iincludes -Ilibft -c $< -o $@

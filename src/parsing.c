@@ -6,7 +6,7 @@
 /*   By: amaligno <amaligno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 16:24:27 by amaligno          #+#    #+#             */
-/*   Updated: 2023/06/14 15:16:15 by amaligno         ###   ########.fr       */
+/*   Updated: 2023/06/19 18:55:09 by amaligno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,11 @@ int	parse_check(char **str)
 	{
 		num = ft_atoi(str[i]);
 		if (!check_alpha(str[i]))
-		{
-			ft_putendl_fd("Invalid int", 2);
-			return (0);
-		}
+			return (ft_putendl_fd("Error", 2), 0);
 		if (num < INT_MIN || num > INT_MAX)
-		{
-			ft_putendl_fd("Int exceeds max/max int", 2);
-			return (0);
-		}
+			return (ft_putendl_fd("Error", 2), 0);
 		if (!check_dup(str, i, num))
-		{
-			ft_putendl_fd("Duplicate int", 2);
-			return (0);
-		}
+			return (ft_putendl_fd("Error", 2), 0);
 	}
 	return (1);
 }

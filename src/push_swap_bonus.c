@@ -6,7 +6,7 @@
 /*   By: amaligno <amaligno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:09:30 by amaligno          #+#    #+#             */
-/*   Updated: 2023/06/18 19:48:53 by amaligno         ###   ########.fr       */
+/*   Updated: 2023/06/19 19:55:27 by amaligno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,4 @@ int	main(int c, char **str)
 	do_instructions(&a, &b);
 	ft_lstclear(&a);
 	ft_lstclear(&b);
-	// system("leaks push_swap");
 }

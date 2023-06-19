@@ -6,7 +6,7 @@
 /*   By: amaligno <amaligno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 14:06:32 by amaligno          #+#    #+#             */
-/*   Updated: 2023/06/14 19:27:58 by amaligno         ###   ########.fr       */
+/*   Updated: 2023/06/19 19:55:36 by amaligno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,9 @@ void	print_stack(t_int *stack)
 	while (a->next)
 	{
 		ft_printf("%i ", a->num);
-		// ft_printf("index :%i] ", a->index);
 		a = a->next;
 	}
 	ft_printf("%i \n", a->num);
-	// ft_printf("index :%i]\n", a->index);
 }
 
 int	is_sorted(t_int *stack)

@@ -6,7 +6,7 @@
 /*   By: amaligno <amaligno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 16:56:02 by amaligno          #+#    #+#             */
-/*   Updated: 2023/06/19 18:02:40 by amaligno         ###   ########.fr       */
+/*   Updated: 2023/06/19 19:55:18 by amaligno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	instructions(t_int **stack_a, t_int **stack_b, char *str)
 	if (!ft_strcmp(str, "pa\n"))
 		push(stack_b, stack_a, 'a');
 	else if (!ft_strcmp(str, "pb\n"))
-		push(stack_a, stack_b, 'a');
+		push(stack_a, stack_b, 'b');
 	else if (!ft_strcmp(str, "sa\n"))
 		swap(stack_a, 'a');
 	else if (!ft_strcmp(str, "sb\n"))
@@ -37,13 +37,14 @@ static int	instructions(t_int **stack_a, t_int **stack_b, char *str)
 	else if (!ft_strcmp(str, "rrr\n"))
 		dual_action(stack_a, stack_b, rotate, 'r');
 	else
-		return (0);
+		return (ft_putendl_fd("Error", 2), 0);
 	return (1);
 }
 
 void	do_instructions(t_int **stack_a, t_int **stack_b)
 {
 	char	*str;
+
 	str = get_next_line(0);
 	while (str)
 	{
@@ -55,12 +56,11 @@ void	do_instructions(t_int **stack_a, t_int **stack_b)
 		if (!instructions(stack_a, stack_b, str))
 		{
 			free(str);
-			break ;
+			exit(0);
 		}
 		free(str);
 		str = get_next_line(0);
 	}
-	print_stack(*stack_a);
 	if (is_sorted(*stack_a))
 		ft_printf("OK\n");
 	else
